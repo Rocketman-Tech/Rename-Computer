@@ -89,7 +89,7 @@ if [ $? != 0 ]; then
 	exit 1
 fi
 
-xml=$(curl -u ${APIUSER}:${APIPASS} ${JSS}/JSSResource/computers/serialnumber/${serialnumber} -X GET)
+xml=$(curl -u ${apiusername}:${apipassword} ${jssurl}/JSSResource/computers/serialnumber/${serialnumber} -X GET)
 echo $xml | grep '<title>Status page</title>'
 if [ $? = 0 ]; then
 	echo $xml 1>&2
