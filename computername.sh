@@ -133,24 +133,20 @@ username=$(echo $xml | xpath 'string(/computer/location/username)' 2>/dev/null)
 # This is a series of IF statements that will rename the model variable captured above into a 
 # short name
 
-if [[ $model = " MacBook Pro"  ]]; then
-	short=MBP
-fi
-if [[ $model = " MacBook"  ]]; then
-	short=MB
-fi
-if [[ $model = " MacBook Air"  ]]; then
-	short=MBA
-fi
-if [[ $model = " Mac Pro"  ]]; then
-	short=MP
-fi
-if [[ $model = " Mac Mini"  ]]; then
-	short=MM
-fi
-if [[ $short = "" ]]; then
-	short=UNK
-fi
+case "model" in
+	MacBook Pro) 	short=MBP
+	;;
+	MacBook) 	short=MB
+	;;
+	MacBook Air) 	short=MBA
+	;;
+	Mac Pro)	short=MP
+	;;
+	Mac Mini)	short=MM
+	;;
+	*)		short=UNK
+	;;
+esac
 
 computerName=${short}-${username}
 
